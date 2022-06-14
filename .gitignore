@@ -1,0 +1,12 @@
+.idea/
+cmake-build-*/
+CMakeFiles/
+CMakeScripts/
+Makefile
+CMakeCache.txt
+
+log/
+logs/
+out/
+temp/
+
