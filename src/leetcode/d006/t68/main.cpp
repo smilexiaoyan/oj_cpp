@@ -2,7 +2,7 @@
 // Created by zhang on 2022/6/14.
 //
 #include <iostream>
-#include "Solution.cpp"
+#include "Solution2.cpp"
 
 int main() {
     Solution solution{};
