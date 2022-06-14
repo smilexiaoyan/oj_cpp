@@ -10,9 +10,6 @@ using namespace std;
 class Solution {
 public:
     vector<string> fullJustify(vector<string> &words, int maxWidth) {
-        string blanks;
-        blanks.resize(maxWidth, ' ');
-
         unsigned int remain = maxWidth + 1;
         vector<string> result{};
         unsigned int start = 0;
@@ -22,14 +19,14 @@ public:
             if (word.length() >= remain) {
                 unsigned int fix_len = end - start - 1;
                 if (fix_len == 0) {
-                    result.push_back(words[start] + blanks.substr(0, remain));
+                    result.push_back(words[start].append(remain, ' '));
                 } else {
                     unsigned int quotient = remain / fix_len;
                     unsigned int remainder = remain % fix_len;
                     string line{words[start]};
                     line.reserve(maxWidth);
                     for (auto i = start + 1; i < end; i++) {
-                        line.append(blanks, 0, quotient + 1 + (i - start > remainder ? 0 : 1));
+                        line.append(quotient + 1 + (i - start > remainder ? 0 : 1), ' ');
                         line.append(words[i]);
                     }
                     result.push_back(line);
@@ -46,10 +43,9 @@ public:
             for (auto i = start + 1; i < end; i++) {
                 line.append(' ' + words[i]);
             }
-            line.append(blanks, 0, remain);
+            line.append(remain, ' ');
             result.push_back(line);
         }
         return result;
     }
-
 };
