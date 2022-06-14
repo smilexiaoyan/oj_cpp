@@ -9,14 +9,12 @@ using namespace std;
 
 class Solution {
 public:
+
     vector<string> fullJustify(vector<string> &words, int maxWidth) {
+        string blanks;
+        blanks.resize(maxWidth, ' ');
+
         unsigned int remain = maxWidth + 1;
-        std::vector<char> b(maxWidth);
-        std::fill(b.begin(), b.end(), ' ');
-        b.push_back('\0');
-        string blanks{b.data()};
-
-
         vector<string> result{};
         vector<string> lines{};
         for (auto &word: words) {
