@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(
         oj_cpp
-        src/leetcode/d006/t68/main.cpp
-        src/leetcode/d006/t68/Solution.cpp)
+#        src/leetcode/d006/t68/main.cpp
+        src/leetcode/d006/t68/Solution.cpp
+        src/leetcode/d007/t87/main.cpp
+        src/leetcode/d007/t87/Solution.cpp
+)
 
