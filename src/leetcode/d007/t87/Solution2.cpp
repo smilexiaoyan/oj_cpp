@@ -21,8 +21,6 @@ public:
         return f(s1, s2, 0, s1.length());
     }
 
-    unordered_map<string, bool> map{};
-
     bool f(string s, string d, int start, int end) {
         if (end == start) {
             return true;
@@ -30,14 +28,9 @@ public:
         if (end - start == 1) {
             return s.at(start) == d.at(start);
         }
-        auto str = s.substr(start, end) + d.substr(start, end);
-        if (map.find(str) != map.end()) {
-            return map[str];
-        }
         for (int i = start + 1; i < end; ++i) {
             if (count_same(s, d, start, i, start, i)) {
                 if (f(s, d, start, i) && f(s, d, i, end)) {
-                    map.emplace(str, true);
                     return true;
                 }
             }
@@ -45,22 +38,20 @@ public:
                 auto s2 = s;
                 swap(s2, start, end, i);
                 if (f(s2, d, start, start + (end - i)) && f(s2, d, start + (end - i), end)) {
-                    map.emplace(str, true);
                     return true;
                 }
             }
         }
-        map.emplace(str, false);
         return false;
 
     }
 
-    static void swap(string& s, int start, int end, int div) {
+    static void swap(string &s, int start, int end, int div) {
         auto temp = s.substr(div, end - div) + s.substr(start, div - start);
         s.replace(start, end - start, temp);
     }
 
-    static bool count_same(string& s, string& d, int start, int end, int start2, int end2) {
+    static bool count_same(string &s, string &d, int start, int end, int start2, int end2) {
         unordered_map<char, int> m{};
         for (int i = start; i < end; ++i) {
             auto it = m.find(s[i]);
@@ -79,7 +70,7 @@ public:
                 --(it->second);
             }
         }
-        for (auto& item: m) {
+        for (auto &item: m) {
             if (item.second != 0) {
                 return false;
             }
